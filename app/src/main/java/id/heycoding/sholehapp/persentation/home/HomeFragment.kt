@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
@@ -14,15 +16,9 @@ import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import id.heycoding.sholehapp.R
 import id.heycoding.sholehapp.databinding.FragmentHomeBinding
-import id.heycoding.sholehapp.persentation.MainActivity
-import id.heycoding.sholehapp.persentation.alquran.AlquranFragment
 import id.heycoding.sholehapp.persentation.home.kajiannew.KajianNewAdapter
 import id.heycoding.sholehapp.persentation.home.mainmenu.MainMenuAdapter
-import id.heycoding.sholehapp.persentation.kiblat.KiblatFragment
-import id.heycoding.sholehapp.persentation.puasa.PuasaFragment
-import id.heycoding.sholehapp.persentation.qurban.QurbanFragment
-import id.heycoding.sholehapp.persentation.sholat.SholatFragment
-import id.heycoding.sholehapp.persentation.zakat.ZakatFragment
+
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(), HomeCallback {
@@ -38,6 +34,7 @@ class HomeFragment : Fragment(), HomeCallback {
         savedInstanceState: Bundle?
     ): View? {
         _fragmentHomeBinding = FragmentHomeBinding.inflate(layoutInflater, container, false)
+        (requireActivity() as AppCompatActivity).supportActionBar?.hide()
 
         mainMenuAdapter = MainMenuAdapter(this)
         kajianNewAdapter = KajianNewAdapter()
@@ -90,33 +87,27 @@ class HomeFragment : Fragment(), HomeCallback {
     }
 
     private fun onNavigateAlquran() {
-        val fragment = AlquranFragment()
-        (activity as MainActivity).moveToFragment(fragment)
+        findNavController().navigate(R.id.action_homeFragment_to_alquranFragment)
     }
 
     private fun onNavigateSholat() {
-        val fragment = SholatFragment()
-        (activity as MainActivity).moveToFragment(fragment)
+        findNavController().navigate(R.id.action_homeFragment_to_sholatFragment)
     }
 
     private fun onNavigateKiblat() {
-        val fragment = KiblatFragment()
-        (activity as MainActivity).moveToFragment(fragment)
+        findNavController().navigate(R.id.action_homeFragment_to_kiblatFragment)
     }
 
     private fun onNavigatePuasa() {
-        val fragment = PuasaFragment()
-        (activity as MainActivity).moveToFragment(fragment)
+        findNavController().navigate(R.id.action_homeFragment_to_puasaFragment)
     }
 
     private fun onNavigateZakat() {
-        val fragment = ZakatFragment()
-        (activity as MainActivity).moveToFragment(fragment)
+        findNavController().navigate(R.id.action_homeFragment_to_zakatFragment)
     }
 
     private fun onNavigateQurban() {
-        val fragment = QurbanFragment()
-        (activity as MainActivity).moveToFragment(fragment)
+        findNavController().navigate(R.id.action_homeFragment_to_qurbanFragment)
     }
 
     private fun ShowMessage() {

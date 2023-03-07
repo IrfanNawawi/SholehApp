@@ -6,7 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import id.heycoding.sholehapp.databinding.ItemSurahAlquranBinding
 import id.heycoding.sholehapp.domain.model.Surah
 
-class AlquranAdapter(var listAlquran: ArrayList<Surah>) : RecyclerView.Adapter<AlquranAdapter.ViewHolder>() {
+class AlquranAdapter(var listAlquran: ArrayList<Surah>) :
+    RecyclerView.Adapter<AlquranAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val binding: ItemSurahAlquranBinding) :
         RecyclerView.ViewHolder(binding.root) {

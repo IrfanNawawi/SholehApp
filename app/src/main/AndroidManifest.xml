@@ -20,7 +20,7 @@
         <activity
             android:name=".persentation.MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.SholehApp.NoActionBar">
+            android:theme="@style/Theme.SholehApp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
