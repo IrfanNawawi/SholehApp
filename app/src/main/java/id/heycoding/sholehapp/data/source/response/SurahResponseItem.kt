@@ -3,6 +3,8 @@ package id.heycoding.sholehapp.data.source.response
 
 import com.google.gson.annotations.SerializedName
 
+// TODO 3 Buat response POJO dari balikan API
+
 data class SurahResponseItem(
     @SerializedName("arti")
     val arti: String,

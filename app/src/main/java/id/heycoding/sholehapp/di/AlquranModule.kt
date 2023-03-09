@@ -15,6 +15,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
+// TODO 7 Buat module class untuk builder retrofit, untuk DI kita menggunakan Dagger Hilt
+
 @Module
 @InstallIn(SingletonComponent::class)
 object AlquranModule {

@@ -5,6 +5,8 @@ import id.heycoding.sholehapp.data.source.response.SurahResponseItem
 import id.heycoding.sholehapp.domain.model.Ayat
 import id.heycoding.sholehapp.domain.model.Surah
 
+// TODO 10 Buat class mapper untuk menghubungkan POJO response dengan POJO mapper
+
 fun List<SurahResponseItem>?.mappingSurahToUseCaseEntity(): List<Surah> {
     val newList: MutableList<Surah> = mutableListOf()
 

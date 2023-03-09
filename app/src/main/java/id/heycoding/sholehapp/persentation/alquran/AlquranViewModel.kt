@@ -11,24 +11,26 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+// TODO 13 Buat viewmodel untuk tempat menampung data yg nanti nya akan di bagikan ke screen ui
+
 @HiltViewModel
 class AlquranViewModel @Inject constructor(
     private val surahUseCase: SurahUseCase
 ) : ViewModel() {
-    private val listSurahData = MutableStateFlow(AlquranState())
-    var _listSurahData: StateFlow<AlquranState> = listSurahData
+    private val _listSurahData = MutableStateFlow(AlquranState())
+    var listSurahData: StateFlow<AlquranState> = _listSurahData
 
     fun getAllSurah() = viewModelScope.launch(Dispatchers.IO) {
         surahUseCase().collect {
             when (it) {
                 is ResultState.Success -> {
-                    listSurahData.value = AlquranState(alquranList = it.data ?: emptyList())
+                    _listSurahData.value = AlquranState(alquranList = it.data ?: emptyList())
                 }
                 is ResultState.Loading -> {
-                    listSurahData.value = AlquranState(isLoading = true)
+                    _listSurahData.value = AlquranState(isLoading = true)
                 }
                 is ResultState.Error -> {
-                    listSurahData.value =
+                    _listSurahData.value =
                         AlquranState(error = it.message ?: "An Unexpected Error")
                 }
             }

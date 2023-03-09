@@ -1,5 +1,11 @@
 package id.heycoding.sholehapp.domain.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+// TODO 9 Buat class POJO untuk mapper
+
+@Parcelize
 data class Surah(
     val arti: String,
     val asma: String,
@@ -11,4 +17,4 @@ data class Surah(
     val rukuk: String,
     val type: String,
     val urut: String
-)
+) : Parcelable

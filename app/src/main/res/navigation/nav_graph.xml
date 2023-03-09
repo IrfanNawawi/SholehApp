@@ -42,6 +42,9 @@
             app:destination="@id/homeFragment"
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_alquranFragment_to_detailAlquranFragment"
+            app:destination="@id/detailAlquranFragment" />
     </fragment>
     <fragment
         android:id="@+id/sholatFragment"
@@ -108,5 +111,16 @@
             app:destination="@id/homeFragment"
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailAlquranFragment"
+        android:name="id.heycoding.sholehapp.persentation.alquran.detailalquran.DetailAlquranFragment"
+        android:label="DetailAlquranFragment"
+        tools:layout="@layout/fragment_detail_alquran">
+        <action
+            android:id="@+id/action_detailAlquranFragment_to_alquranFragment"
+            app:destination="@id/alquranFragment"
+            app:popUpTo="@id/alquranFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
 </navigation>

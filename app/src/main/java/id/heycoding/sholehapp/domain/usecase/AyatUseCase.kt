@@ -15,17 +15,17 @@ class AyatUseCase @Inject constructor(
 ) {
     operator fun invoke(number: String): Flow<ResultState<List<Ayat>>> = flow {
         try {
-            emit(ResultState.Loading<List<Ayat>>())
+            emit(ResultState.Loading())
             val ayat = repository.getAllAyat(number).mappingAyatToUseCaseEntity()
-            emit(ResultState.Success<List<Ayat>>(ayat))
+            emit(ResultState.Success(ayat))
         } catch (e: HttpException) {
             emit(
-                ResultState.Error<List<Ayat>>(
+                ResultState.Error(
                     e.localizedMessage ?: " An Unexpected Error Occurred"
                 )
             )
         } catch (e: IOException) {
-            emit(ResultState.Error<List<Ayat>>("Error Occurred"))
+            emit(ResultState.Error("Error Occurred"))
         }
     }
 }

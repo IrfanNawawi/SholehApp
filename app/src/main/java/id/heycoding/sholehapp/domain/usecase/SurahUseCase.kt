@@ -10,6 +10,8 @@ import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject
 
+// TODO 12 Buat class usecase untuk mengatur hasil balikan dari fetch api dengan state
+
 class SurahUseCase @Inject constructor(
     private val repository: AlquranRepository
 ) {
