@@ -5,9 +5,9 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import id.heycoding.sholehapp.BuildConfig
-import id.heycoding.sholehapp.data.repository.AlquranRepositoryImpl
+import id.heycoding.sholehapp.data.repository.SholehRepositoryImpl
 import id.heycoding.sholehapp.data.source.service.SholehApi
-import id.heycoding.sholehapp.domain.repository.AlquranRepository
+import id.heycoding.sholehapp.domain.repository.SholehRepository
 import id.heycoding.sholehapp.utils.Constants
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -50,7 +50,7 @@ object AlquranModule {
 
     @Provides
     @Singleton
-    fun provideSholehRepository(api: SholehApi): AlquranRepository {
-        return AlquranRepositoryImpl(api)
+    fun provideSholehRepository(api: SholehApi): SholehRepository {
+        return SholehRepositoryImpl(api)
     }
 }

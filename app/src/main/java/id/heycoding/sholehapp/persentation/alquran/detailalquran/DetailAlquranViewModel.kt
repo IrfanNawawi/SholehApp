@@ -3,7 +3,7 @@ package id.heycoding.sholehapp.persentation.alquran.detailalquran
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import id.heycoding.sholehapp.domain.usecase.AyatUseCase
+import id.heycoding.sholehapp.domain.usecase.alquran.AyatUseCase
 import id.heycoding.sholehapp.utils.ResultState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow

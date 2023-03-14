@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -13,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import id.heycoding.sholehapp.R
 import id.heycoding.sholehapp.databinding.FragmentAlquranBinding
-import id.heycoding.sholehapp.domain.model.Surah
+import id.heycoding.sholehapp.domain.model.alquran.Surah
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -34,7 +33,8 @@ class AlquranFragment : Fragment(), AlquranCallback {
         savedInstanceState: Bundle?
     ): View? {
         _fragmentAlquranBinding = FragmentAlquranBinding.inflate(layoutInflater, container, false)
-        (requireActivity() as AppCompatActivity).supportActionBar?.hide()
+
+        alquranViewModel.getAllSurah()
 
         setupObserve()
         setupUI()
@@ -42,24 +42,29 @@ class AlquranFragment : Fragment(), AlquranCallback {
     }
 
     private fun setupObserve() {
-        alquranViewModel.getAllSurah()
-
         CoroutineScope(Dispatchers.Main).launch {
             repeat(valueRepeat) {
                 alquranViewModel.listSurahData.collect { value ->
                     when {
                         value.isLoading -> {
-//                            progressBar.visibility = View.VISIBLE
+                            fragmentAlquranBinding?.shimmerRvAlquran?.startShimmer()
+                            fragmentAlquranBinding?.shimmerRvAlquran?.visibility = View.VISIBLE
                         }
                         value.error.isNotBlank() -> {
-//                            progressBar.visibility = View.GONE
+                            fragmentAlquranBinding?.shimmerRvAlquran?.stopShimmer()
+                            fragmentAlquranBinding?.shimmerRvAlquran?.visibility = View.GONE
+
                             valueRepeat = 0
                             Toast.makeText(requireContext(), value.error, Toast.LENGTH_LONG).show()
                         }
                         value.alquranList.isNotEmpty() -> {
-//                            progressBar.visibility = View.GONE
+                            fragmentAlquranBinding?.shimmerRvAlquran?.stopShimmer()
+                            fragmentAlquranBinding?.shimmerRvAlquran?.visibility = View.GONE
+
                             valueRepeat = 0
+                            listSurahAlquranData.clear()
                             listSurahAlquranData.addAll(value.alquranList)
+                            alquranAdapter.notifyDataSetChanged()
                             alquranAdapter.setOnSurahAlquran(listSurahAlquranData)
                         }
                     }

@@ -4,4 +4,6 @@ package id.heycoding.sholehapp.utils
 
 object Constants {
     const val BASE_URL_ALQURAN = "https://api.npoint.io/"
+    const val URL_KOTA_SHOLAT = "https://api.banghasan.com/sholat/format/json/kota"
+    const val URL_JADWAL_SHOLAT = "https://api.banghasan.com/sholat/format/json/jadwal/kota/"
 }

@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -34,7 +33,6 @@ class HomeFragment : Fragment(), HomeCallback {
         savedInstanceState: Bundle?
     ): View? {
         _fragmentHomeBinding = FragmentHomeBinding.inflate(layoutInflater, container, false)
-        (requireActivity() as AppCompatActivity).supportActionBar?.hide()
 
         mainMenuAdapter = MainMenuAdapter(this)
         kajianNewAdapter = KajianNewAdapter()

@@ -1,8 +1,8 @@
-package id.heycoding.sholehapp.domain.usecase
+package id.heycoding.sholehapp.domain.usecase.alquran
 
 import id.heycoding.sholehapp.data.mappingAyatToUseCaseEntity
-import id.heycoding.sholehapp.domain.model.Ayat
-import id.heycoding.sholehapp.domain.repository.AlquranRepository
+import id.heycoding.sholehapp.domain.model.alquran.Ayat
+import id.heycoding.sholehapp.domain.repository.SholehRepository
 import id.heycoding.sholehapp.utils.ResultState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -11,7 +11,7 @@ import java.io.IOException
 import javax.inject.Inject
 
 class AyatUseCase @Inject constructor(
-    private val repository: AlquranRepository
+    private val repository: SholehRepository
 ) {
     operator fun invoke(number: String): Flow<ResultState<List<Ayat>>> = flow {
         try {

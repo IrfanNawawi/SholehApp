@@ -1,116 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/nav_graph"
+app:startDestination="@id/homeFragment">
 
+<fragment
+    android:id="@+id/homeFragment"
+    android:name="id.heycoding.sholehapp.persentation.home.HomeFragment"
+    tools:layout="@layout/fragment_home">
+    <action
+        android:id="@+id/action_homeFragment_to_sholatFragment"
+        app:destination="@id/sholatFragment" />
+    <action
+        android:id="@+id/action_homeFragment_to_kajianFragment"
+        app:destination="@id/kajianFragment" />
+    <action
+        android:id="@+id/action_homeFragment_to_zakatFragment"
+        app:destination="@id/zakatFragment" />
+    <action
+        android:id="@+id/action_homeFragment_to_puasaFragment"
+        app:destination="@id/puasaFragment" />
+    <action
+        android:id="@+id/action_homeFragment_to_qurbanFragment"
+        app:destination="@id/qurbanFragment" />
+    <action
+        android:id="@+id/action_homeFragment_to_kiblatFragment"
+        app:destination="@id/kiblatFragment" />
+    <action
+        android:id="@+id/action_homeFragment_to_alquranFragment"
+        app:destination="@id/alquranFragment" />
+</fragment>
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="id.heycoding.sholehapp.persentation.home.HomeFragment"
-        android:label="HomeFragment"
-        tools:layout="@layout/fragment_home">
-        <action
-            android:id="@+id/action_homeFragment_to_alquranFragment"
-            app:destination="@id/alquranFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_sholatFragment"
-            app:destination="@id/sholatFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_kajianFragment"
-            app:destination="@id/kajianFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_zakatFragment"
-            app:destination="@id/zakatFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_kiblatFragment"
-            app:destination="@id/kiblatFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_puasaFragment"
-            app:destination="@id/puasaFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_qurbanFragment"
-            app:destination="@id/qurbanFragment" />
-    </fragment>
+    android:id="@+id/sholatFragment"
+    android:name="id.heycoding.sholehapp.persentation.sholat.SholatFragment"
+    android:label="fragment_sholat"
+    tools:layout="@layout/fragment_sholat">
+    <action
+        android:id="@+id/action_sholatFragment_to_homeFragment"
+        app:destination="@id/homeFragment" />
+</fragment>
+<fragment
+    android:id="@+id/kajianFragment"
+    android:name="id.heycoding.sholehapp.persentation.kajian.KajianFragment"
+    android:label="fragment_kajian"
+    tools:layout="@layout/fragment_kajian">
+    <action
+        android:id="@+id/action_kajianFragment_to_homeFragment"
+        app:destination="@id/homeFragment" />
+</fragment>
+<fragment
+    android:id="@+id/zakatFragment"
+    android:name="id.heycoding.sholehapp.persentation.zakat.ZakatFragment"
+    android:label="ZakatFragment"
+    tools:layout="@layout/fragment_zakat">
+    <action
+        android:id="@+id/action_zakatFragment_to_homeFragment"
+        app:destination="@id/homeFragment" />
+</fragment>
     <fragment
-        android:id="@+id/alquranFragment"
-        android:name="id.heycoding.sholehapp.persentation.alquran.AlquranFragment"
-        android:label="AlquranFragment"
-        tools:layout="@layout/fragment_alquran">
-        <action
-            android:id="@+id/action_alquranFragment_to_homeFragment"
-            app:destination="@id/homeFragment"
-            app:popUpTo="@id/homeFragment"
-            app:popUpToInclusive="true" />
-        <action
-            android:id="@+id/action_alquranFragment_to_detailAlquranFragment"
-            app:destination="@id/detailAlquranFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/sholatFragment"
-        android:name="id.heycoding.sholehapp.persentation.sholat.SholatFragment"
-        android:label="fragment_sholat"
-        tools:layout="@layout/fragment_sholat">
-        <action
-            android:id="@+id/action_sholatFragment_to_homeFragment"
-            app:destination="@id/homeFragment"
-            app:popUpTo="@id/homeFragment"
-            app:popUpToInclusive="true" />
-    </fragment>
-    <fragment
-        android:id="@+id/kajianFragment"
-        android:name="id.heycoding.sholehapp.persentation.kajian.KajianFragment"
-        android:label="fragment_kajian"
-        tools:layout="@layout/fragment_kajian">
-        <action
-            android:id="@+id/action_kajianFragment_to_homeFragment"
-            app:destination="@id/homeFragment"
-            app:popUpTo="@id/homeFragment"
-            app:popUpToInclusive="true" />
-    </fragment>
-    <fragment
-        android:id="@+id/zakatFragment"
-        android:name="id.heycoding.sholehapp.persentation.zakat.ZakatFragment"
-        android:label="ZakatFragment"
-        tools:layout="@layout/fragment_zakat">
-        <action
-            android:id="@+id/action_zakatFragment_to_homeFragment"
-            app:destination="@id/homeFragment"
-            app:popUpTo="@id/homeFragment"
-            app:popUpToInclusive="true" />
-    </fragment>
+    android:id="@+id/puasaFragment"
+    android:name="id.heycoding.sholehapp.persentation.puasa.PuasaFragment"
+    android:label="fragment_puasa"
+    tools:layout="@layout/fragment_puasa">
+    <action
+        android:id="@+id/action_puasaFragment_to_homeFragment"
+        app:destination="@id/homeFragment" />
+</fragment>
+<fragment
+    android:id="@+id/qurbanFragment"
+    android:name="id.heycoding.sholehapp.persentation.qurban.QurbanFragment"
+    android:label="fragment_qurban"
+    tools:layout="@layout/fragment_qurban">
+    <action
+        android:id="@+id/action_qurbanFragment_to_homeFragment"
+        app:destination="@id/homeFragment" />
+</fragment>
     <fragment
         android:id="@+id/kiblatFragment"
         android:name="id.heycoding.sholehapp.persentation.kiblat.KiblatFragment"
         android:label="fragment_kiblat"
-        tools:layout="@layout/fragment_kiblat">
+        tools:layout="@layout/fragment_kiblat" >
         <action
             android:id="@+id/action_kiblatFragment_to_homeFragment"
-            app:destination="@id/homeFragment"
-            app:popUpTo="@id/homeFragment"
-            app:popUpToInclusive="true" />
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
-        android:id="@+id/puasaFragment"
-        android:name="id.heycoding.sholehapp.persentation.puasa.PuasaFragment"
-        android:label="fragment_puasa"
-        tools:layout="@layout/fragment_puasa">
+        android:id="@+id/alquranFragment"
+        android:name="id.heycoding.sholehapp.persentation.alquran.AlquranFragment"
+        android:label="fragment_alquran"
+        tools:layout="@layout/fragment_alquran" >
         <action
-            android:id="@+id/action_puasaFragment_to_homeFragment"
-            app:destination="@id/homeFragment"
-            app:popUpTo="@id/homeFragment"
-            app:popUpToInclusive="true" />
-    </fragment>
-    <fragment
-        android:id="@+id/qurbanFragment"
-        android:name="id.heycoding.sholehapp.persentation.qurban.QurbanFragment"
-        android:label="fragment_qurban"
-        tools:layout="@layout/fragment_qurban">
+            android:id="@+id/action_alquranFragment_to_detailAlquranFragment"
+            app:destination="@id/detailAlquranFragment" />
         <action
-            android:id="@+id/action_qurbanFragment_to_homeFragment"
-            app:destination="@id/homeFragment"
-            app:popUpTo="@id/homeFragment"
-            app:popUpToInclusive="true" />
+            android:id="@+id/action_alquranFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailAlquranFragment"
@@ -119,8 +104,6 @@
         tools:layout="@layout/fragment_detail_alquran">
         <action
             android:id="@+id/action_detailAlquranFragment_to_alquranFragment"
-            app:destination="@id/alquranFragment"
-            app:popUpTo="@id/alquranFragment"
-            app:popUpToInclusive="true"/>
+            app:destination="@id/alquranFragment" />
     </fragment>
 </navigation>

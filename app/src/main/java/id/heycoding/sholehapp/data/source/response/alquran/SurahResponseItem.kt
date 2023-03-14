@@ -1,4 +1,4 @@
-package id.heycoding.sholehapp.data.source.response
+package id.heycoding.sholehapp.data.source.response.alquran
 
 
 import com.google.gson.annotations.SerializedName

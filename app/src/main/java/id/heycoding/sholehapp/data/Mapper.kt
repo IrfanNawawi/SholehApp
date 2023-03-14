@@ -1,12 +1,18 @@
 package id.heycoding.sholehapp.data
 
-import id.heycoding.sholehapp.data.source.response.AyatResponseItem
-import id.heycoding.sholehapp.data.source.response.SurahResponseItem
-import id.heycoding.sholehapp.domain.model.Ayat
-import id.heycoding.sholehapp.domain.model.Surah
+import id.heycoding.sholehapp.data.source.response.alquran.AyatResponseItem
+import id.heycoding.sholehapp.data.source.response.alquran.SurahResponseItem
+import id.heycoding.sholehapp.data.source.response.sholat.Data
+import id.heycoding.sholehapp.data.source.response.sholat.Kota
+import id.heycoding.sholehapp.domain.model.alquran.Ayat
+import id.heycoding.sholehapp.domain.model.alquran.Surah
+import id.heycoding.sholehapp.domain.model.sholat.JadwalSholat
+import id.heycoding.sholehapp.domain.model.sholat.KotaSholat
 
 // TODO 10 Buat class mapper untuk menghubungkan POJO response dengan POJO mapper
 
+
+// Feature Alquran
 fun List<SurahResponseItem>?.mappingSurahToUseCaseEntity(): List<Surah> {
     val newList: MutableList<Surah> = mutableListOf()
 
@@ -53,4 +59,44 @@ fun List<AyatResponseItem>?.mappingAyatToUseCaseEntity(): List<Ayat> {
     } else {
         newList
     }
+}
+
+// Feature Sholat
+fun List<Kota>?.mappingKotaToUseCaseEntity(): List<KotaSholat> {
+    val newList: MutableList<KotaSholat> = mutableListOf()
+
+    this?.forEach {
+        newList.add(
+            KotaSholat(
+                id = it.id,
+                nama = it.nama,
+            )
+        )
+    }
+
+    return if (this.isNullOrEmpty()) {
+        emptyList()
+    } else {
+        newList
+    }
+}
+
+fun Data.mappingJadwalToUseCaseEntity(): List<JadwalSholat> {
+    val newList: MutableList<JadwalSholat> = mutableListOf()
+
+    newList.add(
+        JadwalSholat(
+            tanggal = tanggal,
+            imsak = imsak,
+            subuh = subuh,
+            terbit = terbit,
+            dhuha = dhuha,
+            dzuhur = dzuhur,
+            ashar = ashar,
+            maghrib = maghrib,
+            isya = isya
+        )
+    )
+
+    return newList
 }

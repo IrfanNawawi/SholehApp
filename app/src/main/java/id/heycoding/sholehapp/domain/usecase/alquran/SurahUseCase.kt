@@ -1,8 +1,8 @@
-package id.heycoding.sholehapp.domain.usecase
+package id.heycoding.sholehapp.domain.usecase.alquran
 
 import id.heycoding.sholehapp.data.mappingSurahToUseCaseEntity
-import id.heycoding.sholehapp.domain.model.Surah
-import id.heycoding.sholehapp.domain.repository.AlquranRepository
+import id.heycoding.sholehapp.domain.model.alquran.Surah
+import id.heycoding.sholehapp.domain.repository.SholehRepository
 import id.heycoding.sholehapp.utils.ResultState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -13,7 +13,7 @@ import javax.inject.Inject
 // TODO 12 Buat class usecase untuk mengatur hasil balikan dari fetch api dengan state
 
 class SurahUseCase @Inject constructor(
-    private val repository: AlquranRepository
+    private val repository: SholehRepository
 ) {
     operator fun invoke(): Flow<ResultState<List<Surah>>> = flow {
         try {

@@ -59,6 +59,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="4dp"
                             android:text="Jakarta Selatan"
+                            android:fontFamily="@font/montserrat_semibold_600"
                             android:textColor="@color/white"
                             android:textSize="18sp" />
 
@@ -67,6 +68,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Jumat, 3 Maret 2023"
+                            android:fontFamily="@font/montserrat_regular_400"
                             android:textColor="@color/white"
                             android:textSize="14sp" />
 
@@ -107,6 +109,7 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="16dp"
                 android:text="Kajian Terbaru"
+                android:fontFamily="@font/montserrat_semibold_600"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -1,4 +1,4 @@
-package id.heycoding.sholehapp.domain.model
+package id.heycoding.sholehapp.domain.model.alquran
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

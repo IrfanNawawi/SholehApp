@@ -1,4 +1,4 @@
-package id.heycoding.sholehapp.domain.model
+package id.heycoding.sholehapp.domain.model.alquran
 
 data class Ayat(
     val ar: String,

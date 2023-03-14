@@ -12,42 +12,42 @@ object DataDummy {
         mainMenu.add(
             MainMenu(
                 idMenu = 1,
-                imageMenu = R.drawable.ic_launcher_background,
+                imageMenu = R.drawable.ic_quran,
                 titleMenu = "Al-Qur'an"
             )
         )
         mainMenu.add(
             MainMenu(
                 idMenu = 2,
-                imageMenu = R.drawable.ic_launcher_background,
+                imageMenu = R.drawable.ic_mosque,
                 titleMenu = "Jadwal Sholat"
             )
         )
         mainMenu.add(
             MainMenu(
                 idMenu = 3,
-                imageMenu = R.drawable.ic_launcher_background,
+                imageMenu = R.drawable.ic_pray,
                 titleMenu = "Arah Kiblat"
             )
         )
         mainMenu.add(
             MainMenu(
                 idMenu = 4,
-                imageMenu = R.drawable.ic_launcher_background,
+                imageMenu = R.drawable.ic_ramadan,
                 titleMenu = "Jadwal Puasa"
             )
         )
         mainMenu.add(
             MainMenu(
                 idMenu = 5,
-                imageMenu = R.drawable.ic_launcher_background,
+                imageMenu = R.drawable.ic_zakat,
                 titleMenu = "Zakat"
             )
         )
         mainMenu.add(
             MainMenu(
                 idMenu = 6,
-                imageMenu = R.drawable.ic_launcher_background,
+                imageMenu = R.drawable.ic_qurban,
                 titleMenu = "Qurban"
             )
         )

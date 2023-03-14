@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import id.heycoding.sholehapp.databinding.ItemAyatAlquranBinding
-import id.heycoding.sholehapp.domain.model.Ayat
+import id.heycoding.sholehapp.domain.model.alquran.Ayat
 
 class DetailAlquranAdapter(var listAyatAlquran: ArrayList<Ayat>) :
     RecyclerView.Adapter<DetailAlquranAdapter.ViewHolder>() {
