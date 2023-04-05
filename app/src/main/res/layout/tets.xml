@@ -15,6 +15,28 @@
         android:fitsSystemWindows="true"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:contentInsetStart="0dp"
+            app:contentInsetStartWithNavigation="0dp"
+            app:layout_collapseMode="pin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_title_toolbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/montserrat_regular_400"
+                android:text="Sholat"
+                android:textColor="@color/purple_500"
+                android:textSize="18sp" />
+        </androidx.appcompat.widget.Toolbar>
+
         <LinearLayout
             android:id="@+id/ll_filter_sholat"
             android:layout_width="match_parent"
@@ -47,8 +69,6 @@
                     android:clickable="false"
                     android:cursorVisible="false"
                     android:focusable="false"
-                    android:textColor="@color/colorPrimary"
-                    android:textColorHint="@color/colorPrimary"
                     android:fontFamily="@font/montserrat_semibold_600"
                     android:focusableInTouchMode="false"
                     android:textSize="16sp"
@@ -76,8 +96,8 @@
                     android:id="@+id/auto_city"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/colorPrimary"
-                    android:textColorHint="@color/colorPrimary"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
                     android:fontFamily="@font/montserrat_semibold_600"
                     android:inputType="none"
                     android:textSize="16sp" />

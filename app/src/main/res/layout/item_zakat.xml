@@ -3,8 +3,7 @@
     android:layout_width="88dp"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="10dp"
-    android:transitionName="img_menu">
+    android:padding="10dp">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/img_menu_home"
@@ -21,9 +20,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="16dp"
-        android:fontFamily="@font/montserrat_medium_500"
         android:text="Jadwal Sholat"
         android:textAlignment="center"
+        android:fontFamily="@font/montserrat_medium_500"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

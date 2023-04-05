@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -93,19 +94,23 @@ class HomeFragment : Fragment(), HomeCallback {
     }
 
     private fun onNavigateKiblat() {
-        findNavController().navigate(R.id.action_homeFragment_to_kiblatFragment)
+        ShowMessage()
+//        findNavController().navigate(R.id.action_homeFragment_to_kiblatFragment)
     }
 
     private fun onNavigatePuasa() {
-        findNavController().navigate(R.id.action_homeFragment_to_puasaFragment)
+        ShowMessage()
+//        findNavController().navigate(R.id.action_homeFragment_to_puasaFragment)
     }
 
     private fun onNavigateZakat() {
-        findNavController().navigate(R.id.action_homeFragment_to_zakatFragment)
+        ShowMessage()
+//        findNavController().navigate(R.id.action_homeFragment_to_zakatFragment)
     }
 
     private fun onNavigateQurban() {
-        findNavController().navigate(R.id.action_homeFragment_to_qurbanFragment)
+        ShowMessage()
+//        findNavController().navigate(R.id.action_homeFragment_to_qurbanFragment)
     }
 
     private fun ShowMessage() {

@@ -16,6 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import id.heycoding.sholehapp.databinding.FragmentDetailAlquranBinding
 import id.heycoding.sholehapp.domain.model.alquran.Ayat
 import id.heycoding.sholehapp.domain.model.alquran.Surah
+import id.heycoding.sholehapp.persentation.MainActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -53,7 +54,6 @@ class DetailAlquranFragment : Fragment() {
 
             fragmentDetailAlquranBinding?.apply {
                 numberSurah = dataAlquran?.nomor.toString()
-                tvTitleToolbar.text = dataAlquran?.nama
                 tvTitleSurah.text = dataAlquran?.nama
                 tvArtiSurah.text = dataAlquran?.arti
                 tvInfoSurah.text = "${dataAlquran?.type} - ${dataAlquran?.ayat} Ayat"

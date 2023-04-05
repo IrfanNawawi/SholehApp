@@ -1,6 +1,7 @@
 package id.heycoding.sholehapp.persentation.alquran
 
 import android.os.Bundle
+import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import id.heycoding.sholehapp.R
 import id.heycoding.sholehapp.databinding.FragmentAlquranBinding
 import id.heycoding.sholehapp.domain.model.alquran.Surah
+import id.heycoding.sholehapp.persentation.MainActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -27,6 +29,10 @@ class AlquranFragment : Fragment(), AlquranCallback {
     private lateinit var alquranAdapter: AlquranAdapter
     private val listSurahAlquranData = arrayListOf<Surah>()
     private var valueRepeat = 3
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

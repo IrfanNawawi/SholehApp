@@ -2,18 +2,18 @@ package id.heycoding.sholehapp.persentation.sholat
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
+import id.heycoding.sholehapp.R
 import id.heycoding.sholehapp.databinding.FragmentSholatBinding
-import id.heycoding.sholehapp.domain.model.alquran.Surah
 import id.heycoding.sholehapp.domain.model.sholat.JadwalSholat
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -21,7 +21,6 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 @AndroidEntryPoint
@@ -32,9 +31,9 @@ class SholatFragment : Fragment() {
     private val sholatViewModel by viewModels<SholatViewModel>()
     private val listIdKota: MutableList<String> = mutableListOf()
     private val listKota: MutableList<String> = mutableListOf()
-    val calendarSholat: Calendar = Calendar.getInstance()
-    private lateinit var sholatAdapter: SholatAdapter
     private val listJadwalSholatData = arrayListOf<JadwalSholat>()
+    private val calendarSholat: Calendar = Calendar.getInstance()
+    private lateinit var sholatAdapter: SholatAdapter
     private var valueRepeat = 3
 
     override fun onCreateView(
@@ -52,24 +51,14 @@ class SholatFragment : Fragment() {
         sholatAdapter = SholatAdapter(ArrayList())
 
         fragmentSholatBinding?.apply {
-            spinnerKota.isEnabled = false
-            spinnerKota.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onNothingSelected(parent: AdapterView<*>?) {}
+            autoCity.isEnabled = false
+            Log.d("dapet coy 2", fragmentSholatBinding?.tvTanggalSholatHidden?.text.toString())
+            autoCity.setOnItemClickListener { parent, view, position, id ->
+                sholatViewModel.getAllJadwalSholat(
+                    listIdKota[position],
+                    fragmentSholatBinding?.tvTanggalSholatHidden?.text.toString()
+                )
 
-                override fun onItemSelected(
-                    parent: AdapterView<*>?,
-                    view: View?,
-                    position: Int,
-                    id: Long
-                ) {
-                    parent?.getItemAtPosition(position).toString()
-                    if (position > 0) {
-                        sholatViewModel.getAllJadwalSholat(
-                            listIdKota[position],
-                            fragmentSholatBinding?.edtTanggalSholat?.text.toString()
-                        )
-                    }
-                }
             }
 
             val dateSetListener =
@@ -132,13 +121,12 @@ class SholatFragment : Fragment() {
                                 listKota.add(it.nama)
                             }
 
-                            val adapterSeason = ArrayAdapter(
+                            val adapterSholat = ArrayAdapter(
                                 requireContext(),
-                                android.R.layout.simple_spinner_dropdown_item,
+                                R.layout.item_list_city,
                                 listKota
                             )
-                            adapterSeason.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                            fragmentSholatBinding?.spinnerKota?.adapter = adapterSeason
+                            fragmentSholatBinding?.autoCity?.setAdapter(adapterSholat)
                         }
                         value.jadwalSholatList.isNotEmpty() -> {
                             fragmentSholatBinding?.shimmerRvSholat?.stopShimmer()
@@ -158,13 +146,18 @@ class SholatFragment : Fragment() {
     }
 
     private fun updateLabel() {
-        val myFormat = "yyyy-MM-dd"
-        val dateFormat = SimpleDateFormat(myFormat, Locale.US)
+        val formatView = "dd MMMM yyyy"
+        val formatFetch = "yyyy-MM-dd"
+        val dateFormat = SimpleDateFormat(formatView, Locale.US)
+        val dateFormatFetch = SimpleDateFormat(formatFetch, Locale.US)
         fragmentSholatBinding?.edtTanggalSholat?.setText(dateFormat.format(calendarSholat.time))
+        fragmentSholatBinding?.tvTanggalSholatHidden?.text =
+            dateFormatFetch.format(calendarSholat.time)
 
         if (fragmentSholatBinding?.edtTanggalSholat?.text.toString().isNotEmpty()) {
-            fragmentSholatBinding?.spinnerKota?.isEnabled = true
+            fragmentSholatBinding?.autoCity?.isEnabled = true
             sholatViewModel.getAllKota()
+            Log.d("dapet coy", fragmentSholatBinding?.tvTanggalSholatHidden?.text.toString())
         } else {
             showMessage("Silahkan isi dulu tanggal")
         }
