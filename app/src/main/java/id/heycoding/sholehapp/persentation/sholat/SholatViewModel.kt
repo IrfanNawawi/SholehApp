@@ -25,31 +25,40 @@ class SholatViewModel @Inject constructor(
         kotaUseCase(Constants.URL_KOTA_SHOLAT).collect {
             when (it) {
                 is ResultState.Success -> {
-                    _listJadwalSholatData.value = SholatState(kotaSholatList = it.data ?: emptyList())
+                    _listJadwalSholatData.value =
+                        SholatState(cityPrayerList = it.data ?: emptyList())
                 }
                 is ResultState.Loading -> {
                     _listJadwalSholatData.value = SholatState(isLoading = true)
                 }
                 is ResultState.Error -> {
-                    _listJadwalSholatData.value = SholatState(error = it.message ?: "An Unexpected Error")
+                    _listJadwalSholatData.value =
+                        SholatState(error = it.message ?: "An Unexpected Error")
                 }
             }
         }
     }
 
-    fun getAllJadwalSholat(idKota: String, tanggal: String) = viewModelScope.launch(Dispatchers.IO) {
-        jadwalSholatUseCase(Constants.URL_JADWAL_SHOLAT + "$idKota/tanggal/$tanggal").collect {
-            when (it) {
-                is ResultState.Success -> {
-                    _listJadwalSholatData.value = SholatState(jadwalSholatList = it.data ?: emptyList())
-                }
-                is ResultState.Loading -> {
-                    _listJadwalSholatData.value = SholatState(isLoading = true)
-                }
-                is ResultState.Error -> {
-                    _listJadwalSholatData.value = SholatState(error = it.message ?: "An Unexpected Error")
+    fun getAllJadwalSholat(idKota: String, tanggal: String) =
+        viewModelScope.launch(Dispatchers.IO) {
+            jadwalSholatUseCase(
+                Constants.URL_JADWAL_SHOLAT + "$idKota/tanggal/$tanggal",
+                idKota,
+                tanggal
+            ).collect {
+                when (it) {
+                    is ResultState.Success -> {
+                        _listJadwalSholatData.value =
+                            SholatState(prayerScheduleList = it.data ?: emptyList())
+                    }
+                    is ResultState.Loading -> {
+                        _listJadwalSholatData.value = SholatState(isLoading = true)
+                    }
+                    is ResultState.Error -> {
+                        _listJadwalSholatData.value =
+                            SholatState(error = it.message ?: "An Unexpected Error")
+                    }
                 }
             }
         }
-    }
 }

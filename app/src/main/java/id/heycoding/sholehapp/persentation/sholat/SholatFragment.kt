@@ -2,7 +2,6 @@ package id.heycoding.sholehapp.persentation.sholat
 
 import android.app.DatePickerDialog
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import id.heycoding.sholehapp.R
 import id.heycoding.sholehapp.databinding.FragmentSholatBinding
-import id.heycoding.sholehapp.domain.model.sholat.JadwalSholat
+import id.heycoding.sholehapp.domain.model.sholat.PrayerSchedule
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -29,11 +28,11 @@ class SholatFragment : Fragment() {
     private var _fragmentSholatBinding: FragmentSholatBinding? = null
     private val fragmentSholatBinding get() = _fragmentSholatBinding
     private val sholatViewModel by viewModels<SholatViewModel>()
+    private lateinit var sholatAdapter: SholatAdapter
     private val listIdKota: MutableList<String> = mutableListOf()
     private val listKota: MutableList<String> = mutableListOf()
-    private val listJadwalSholatData = arrayListOf<JadwalSholat>()
+    private var listJadwalData: MutableList<PrayerSchedule> = mutableListOf()
     private val calendarSholat: Calendar = Calendar.getInstance()
-    private lateinit var sholatAdapter: SholatAdapter
     private var valueRepeat = 3
 
     override fun onCreateView(
@@ -42,18 +41,22 @@ class SholatFragment : Fragment() {
     ): View? {
         _fragmentSholatBinding = FragmentSholatBinding.inflate(layoutInflater, container, false)
 
-        setupUI()
-        setupObserve()
+        sholatAdapter = SholatAdapter()
+
         return fragmentSholatBinding?.root
     }
 
-    private fun setupUI() {
-        sholatAdapter = SholatAdapter(ArrayList())
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
+        setupUI()
+        setupObserve()
+    }
+
+    private fun setupUI() {
         fragmentSholatBinding?.apply {
             autoCity.isEnabled = false
-            Log.d("dapet coy 2", fragmentSholatBinding?.tvTanggalSholatHidden?.text.toString())
-            autoCity.setOnItemClickListener { parent, view, position, id ->
+            autoCity.setOnItemClickListener { _, _, position, _ ->
                 sholatViewModel.getAllJadwalSholat(
                     listIdKota[position],
                     fragmentSholatBinding?.tvTanggalSholatHidden?.text.toString()
@@ -88,58 +91,61 @@ class SholatFragment : Fragment() {
         }
     }
 
-    private fun showMessage(s: String) {
-        Toast.makeText(requireContext(), s, Toast.LENGTH_SHORT).show()
-    }
-
     private fun setupObserve() {
-        CoroutineScope(Dispatchers.Main).launch {
-            repeat(valueRepeat) {
-                sholatViewModel.listJadwalSholatData.collect { value ->
-                    when {
-                        value.isLoading -> {
-                            fragmentSholatBinding?.shimmerRvSholat?.startShimmer()
-                            fragmentSholatBinding?.shimmerRvSholat?.visibility = View.VISIBLE
-                        }
-                        value.error.isNotBlank() -> {
-                            fragmentSholatBinding?.shimmerRvSholat?.stopShimmer()
-                            fragmentSholatBinding?.shimmerRvSholat?.visibility = View.GONE
-
-                            valueRepeat = 0
-                            Toast.makeText(requireContext(), value.error, Toast.LENGTH_SHORT).show()
-                        }
-                        value.kotaSholatList.isNotEmpty() -> {
-                            fragmentSholatBinding?.shimmerRvSholat?.stopShimmer()
-                            fragmentSholatBinding?.shimmerRvSholat?.visibility = View.GONE
-
-                            valueRepeat = 0
-
-                            listIdKota.clear()
-                            listKota.clear()
-                            value.kotaSholatList.map {
-                                listIdKota.add(it.id)
-                                listKota.add(it.nama)
+        sholatViewModel.apply {
+            CoroutineScope(Dispatchers.Main).launch {
+                repeat(valueRepeat) {
+                    listJadwalSholatData.collect { value ->
+                        when {
+                            value.isLoading -> {
+                                fragmentSholatBinding?.shimmerRvSholat?.startShimmer()
+                                fragmentSholatBinding?.fmJadwalSholat?.visibility = View.GONE
+                                fragmentSholatBinding?.shimmerRvSholat?.visibility = View.VISIBLE
                             }
+                            value.error.isNotBlank() -> {
+                                fragmentSholatBinding?.shimmerRvSholat?.stopShimmer()
+                                fragmentSholatBinding?.fmJadwalSholat?.visibility = View.VISIBLE
+                                fragmentSholatBinding?.shimmerRvSholat?.visibility = View.GONE
 
-                            val adapterSholat = ArrayAdapter(
-                                requireContext(),
-                                R.layout.item_list_city,
-                                listKota
-                            )
-                            fragmentSholatBinding?.autoCity?.setAdapter(adapterSholat)
-                        }
-                        value.jadwalSholatList.isNotEmpty() -> {
-                            fragmentSholatBinding?.shimmerRvSholat?.stopShimmer()
-                            fragmentSholatBinding?.shimmerRvSholat?.visibility = View.GONE
+                                valueRepeat = 0
+                                Toast.makeText(requireContext(), value.error, Toast.LENGTH_SHORT)
+                                    .show()
+                            }
+                            value.cityPrayerList.isNotEmpty() -> {
+                                fragmentSholatBinding?.shimmerRvSholat?.stopShimmer()
+                                fragmentSholatBinding?.fmJadwalSholat?.visibility = View.VISIBLE
+                                fragmentSholatBinding?.shimmerRvSholat?.visibility = View.GONE
 
-                            valueRepeat = 0
-                            listJadwalSholatData.clear()
-                            listJadwalSholatData.addAll(value.jadwalSholatList)
-                            sholatAdapter.notifyDataSetChanged()
-                            sholatAdapter.setOnJadwalSholat(listJadwalSholatData)
+                                valueRepeat = 0
+
+                                listIdKota.clear()
+                                listKota.clear()
+                                value.cityPrayerList.map {
+                                    listIdKota.add(it.id)
+                                    listKota.add(it.nama)
+                                }
+
+                                val adapterSholat = ArrayAdapter(
+                                    requireContext(),
+                                    R.layout.item_list_city,
+                                    listKota
+                                )
+                                fragmentSholatBinding?.autoCity?.setAdapter(adapterSholat)
+                            }
+                            value.prayerScheduleList.isNotEmpty() -> {
+                                fragmentSholatBinding?.shimmerRvSholat?.stopShimmer()
+                                fragmentSholatBinding?.fmJadwalSholat?.visibility = View.VISIBLE
+                                fragmentSholatBinding?.imgNoData?.visibility = View.GONE
+                                fragmentSholatBinding?.shimmerRvSholat?.visibility = View.GONE
+
+                                valueRepeat = 0
+                                listJadwalData.clear()
+                                listJadwalData.addAll(value.prayerScheduleList)
+                                sholatAdapter.setOnJadwalSholat(listJadwalData)
+                            }
                         }
+                        delay(1000)
                     }
-                    delay(1000)
                 }
             }
         }
@@ -155,11 +161,19 @@ class SholatFragment : Fragment() {
             dateFormatFetch.format(calendarSholat.time)
 
         if (fragmentSholatBinding?.edtTanggalSholat?.text.toString().isNotEmpty()) {
-            fragmentSholatBinding?.autoCity?.isEnabled = true
+            fragmentSholatBinding?.layoutAutocity?.visibility = View.VISIBLE
             sholatViewModel.getAllKota()
-            Log.d("dapet coy", fragmentSholatBinding?.tvTanggalSholatHidden?.text.toString())
         } else {
             showMessage("Silahkan isi dulu tanggal")
         }
+    }
+
+    private fun showMessage(s: String) {
+        Toast.makeText(requireContext(), s, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _fragmentSholatBinding = null
     }
 }

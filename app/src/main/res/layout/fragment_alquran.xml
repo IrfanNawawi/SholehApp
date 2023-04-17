@@ -17,13 +17,13 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:padding="16dp">
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/cv_ayat_alquran"
+                    android:id="@+id/cv_banner"
                     android:layout_width="match_parent"
                     android:layout_height="180dp"
-                    android:layout_margin="16dp"
                     app:cardCornerRadius="12dp"
                     app:cardElevation="5dp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -34,17 +34,17 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/bg_main"
-                        android:padding="16dp">
-                    </ImageView>
+                        android:contentDescription="@string/app_name"
+                        android:padding="16dp" />
                 </androidx.cardview.widget.CardView>
 
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_margin="16dp"
-                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/cv_ayat_alquran">
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cv_banner">
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rv_surah_alquran"

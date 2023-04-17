@@ -6,17 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.LinearSnapHelper
-import androidx.recyclerview.widget.SnapHelper
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import id.heycoding.sholehapp.R
 import id.heycoding.sholehapp.databinding.FragmentHomeBinding
-import id.heycoding.sholehapp.persentation.home.kajiannew.KajianNewAdapter
 import id.heycoding.sholehapp.persentation.home.mainmenu.MainMenuAdapter
 
 
@@ -27,7 +22,6 @@ class HomeFragment : Fragment(), HomeCallback {
     private val fragmentHomeBinding get() = _fragmentHomeBinding
     private val homeViewModel by viewModels<HomeViewModel>()
     private lateinit var mainMenuAdapter: MainMenuAdapter
-    private lateinit var kajianNewAdapter: KajianNewAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,31 +30,26 @@ class HomeFragment : Fragment(), HomeCallback {
         _fragmentHomeBinding = FragmentHomeBinding.inflate(layoutInflater, container, false)
 
         mainMenuAdapter = MainMenuAdapter(this)
-        kajianNewAdapter = KajianNewAdapter()
+
+        return fragmentHomeBinding?.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         setupObserve()
         setupUI()
-        return fragmentHomeBinding?.root
     }
 
     private fun setupUI() {
         fragmentHomeBinding?.apply {
             rvMenuMain.apply {
                 layoutManager =
-                    GridLayoutManager(context, 2, GridLayoutManager.HORIZONTAL, false)
+                    GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)
                 setHasFixedSize(true)
                 adapter = mainMenuAdapter
                 clipToPadding = false
                 clipChildren = false
-            }
-            rvKajianNew.apply {
-                layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-                setHasFixedSize(true)
-                adapter = kajianNewAdapter
-                clipToPadding = false
-                clipChildren = false
-                val snapHelper: SnapHelper = LinearSnapHelper()
-                snapHelper.attachToRecyclerView(rvKajianNew)
             }
         }
     }
@@ -68,9 +57,7 @@ class HomeFragment : Fragment(), HomeCallback {
     private fun setupObserve() {
         homeViewModel.apply {
             val mainMenu = onMainMenu()
-            val kajianNew = onKajianNew()
             mainMenuAdapter.setOnMainMenu(mainMenu)
-            kajianNewAdapter.setOnKajianNew(kajianNew)
         }
     }
 
@@ -81,7 +68,7 @@ class HomeFragment : Fragment(), HomeCallback {
             3 -> onNavigateKiblat()
             4 -> onNavigatePuasa()
             5 -> onNavigateZakat()
-            else -> onNavigateQurban()
+            6 -> onNavigateQurban()
         }
     }
 
@@ -104,8 +91,7 @@ class HomeFragment : Fragment(), HomeCallback {
     }
 
     private fun onNavigateZakat() {
-        ShowMessage()
-//        findNavController().navigate(R.id.action_homeFragment_to_zakatFragment)
+        findNavController().navigate(R.id.action_homeFragment_to_zakatFragment)
     }
 
     private fun onNavigateQurban() {
@@ -119,5 +105,10 @@ class HomeFragment : Fragment(), HomeCallback {
             "On Development",
             Snackbar.LENGTH_SHORT
         ).show()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _fragmentHomeBinding = null
     }
 }

@@ -1,7 +1,6 @@
 package id.heycoding.sholehapp.domain.usecase.sholat
 
-import id.heycoding.sholehapp.data.mappingJadwalToUseCaseEntity
-import id.heycoding.sholehapp.domain.model.sholat.JadwalSholat
+import id.heycoding.sholehapp.domain.model.sholat.PrayerSchedule
 import id.heycoding.sholehapp.domain.repository.SholehRepository
 import id.heycoding.sholehapp.utils.ResultState
 import kotlinx.coroutines.flow.Flow
@@ -11,11 +10,15 @@ import java.io.IOException
 import javax.inject.Inject
 
 class JadwalSholatUseCase @Inject constructor(private val repository: SholehRepository) {
-    operator fun invoke(jadwalSholatUrl: String): Flow<ResultState<List<JadwalSholat>>> = flow {
+    operator fun invoke(
+        jadwalSholatUrl: String,
+        idKota: String,
+        tanggal: String
+    ): Flow<ResultState<List<PrayerSchedule>>> = flow {
         try {
             emit(ResultState.Loading())
             val jadwalSholat =
-                repository.getAllJadwalSholat(jadwalSholatUrl).jadwal.data.mappingJadwalToUseCaseEntity()
+                repository.getAllJadwalSholat(jadwalSholatUrl, idKota, tanggal)
             emit(ResultState.Success(jadwalSholat))
         } catch (e: HttpException) {
             emit(

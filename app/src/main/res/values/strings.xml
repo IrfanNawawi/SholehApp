@@ -2,6 +2,22 @@
     <string name="app_name">SholehApp</string>
     <string name="desc_dummy">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="txt_select_item">Select Item</string>
-    <string name="txt_select_date">Select Date</string>
+    <string name="txt_select_item">Pilih Kota</string>
+    <string name="txt_select_date">Pilih Tanggal</string>
+    <string name="txt_column_not_blank">Kolom tidak boleh kosong</string>
+    <string name="txt_sum_person">Jumlah Jiwa</string>
+    <string name="txt_zakat_rice">Zakat Beras</string>
+    <string name="txt_zakat_money">Zakat Uang</string>
+    <string name="txt_zakat_infaq">Infak</string>
+    <string name="txt_zakat_info">Untuk perhitungan zakat perjiwa nya 3,5 liter untuk beras dan Rp 45.000 untuk uang.</string>
+    <string name="txt_submit">Simpan</string>
+    <string name="title_activity_test">Test</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>

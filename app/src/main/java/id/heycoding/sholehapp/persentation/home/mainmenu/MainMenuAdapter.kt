@@ -2,11 +2,10 @@ package id.heycoding.sholehapp.persentation.home.mainmenu
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import id.heycoding.sholehapp.data.source.entity.model.MainMenu
 import id.heycoding.sholehapp.databinding.ItemMenuMainBinding
+import id.heycoding.sholehapp.domain.model.dummy.MainMenu
 import id.heycoding.sholehapp.persentation.home.HomeCallback
 
 class MainMenuAdapter(private val callback: HomeCallback) :
@@ -19,6 +18,7 @@ class MainMenuAdapter(private val callback: HomeCallback) :
             binding.apply {
                 Glide.with(itemView.context).load(onMainMenu.imageMenu).into(imgMenuHome)
                 tvMenuHome.text = onMainMenu.titleMenu
+                tvMenuTranslateHome.text = onMainMenu.titleMenuEng
 
                 itemView.setOnClickListener {
                     callback.onNavigateMainMenu(

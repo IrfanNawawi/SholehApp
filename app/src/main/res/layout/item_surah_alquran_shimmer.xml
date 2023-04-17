@@ -22,7 +22,7 @@
             <RelativeLayout
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:background="@color/colorShimmer"/>
+                android:background="@color/colorShimmer" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -64,8 +64,8 @@
                     <TextView
                         android:layout_width="40dp"
                         android:layout_height="20dp"
-                        android:gravity="center"
                         android:background="@color/colorShimmer"
+                        android:gravity="center"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -94,7 +94,7 @@
             <RelativeLayout
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:background="@color/colorShimmer"/>
+                android:background="@color/colorShimmer" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -136,8 +136,8 @@
                     <TextView
                         android:layout_width="40dp"
                         android:layout_height="20dp"
-                        android:gravity="center"
                         android:background="@color/colorShimmer"
+                        android:gravity="center"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -166,7 +166,7 @@
             <RelativeLayout
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:background="@color/colorShimmer"/>
+                android:background="@color/colorShimmer" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -208,8 +208,8 @@
                     <TextView
                         android:layout_width="40dp"
                         android:layout_height="20dp"
-                        android:gravity="center"
                         android:background="@color/colorShimmer"
+                        android:gravity="center"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -238,7 +238,7 @@
             <RelativeLayout
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:background="@color/colorShimmer"/>
+                android:background="@color/colorShimmer" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -280,8 +280,8 @@
                     <TextView
                         android:layout_width="40dp"
                         android:layout_height="20dp"
-                        android:gravity="center"
                         android:background="@color/colorShimmer"
+                        android:gravity="center"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -310,7 +310,7 @@
             <RelativeLayout
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:background="@color/colorShimmer"/>
+                android:background="@color/colorShimmer" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -352,8 +352,8 @@
                     <TextView
                         android:layout_width="40dp"
                         android:layout_height="20dp"
-                        android:gravity="center"
                         android:background="@color/colorShimmer"
+                        android:gravity="center"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 

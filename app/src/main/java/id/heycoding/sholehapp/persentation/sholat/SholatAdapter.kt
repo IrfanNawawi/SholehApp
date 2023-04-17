@@ -4,14 +4,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import id.heycoding.sholehapp.databinding.ItemJadwalSholatBinding
-import id.heycoding.sholehapp.domain.model.sholat.JadwalSholat
+import id.heycoding.sholehapp.domain.model.sholat.PrayerSchedule
 
-class SholatAdapter(var listJadwalSholat: ArrayList<JadwalSholat>) :
-    RecyclerView.Adapter<SholatAdapter.ViewHolder>() {
+class SholatAdapter : RecyclerView.Adapter<SholatAdapter.ViewHolder>() {
+    private val listPrayerSchedule = ArrayList<PrayerSchedule>()
 
     inner class ViewHolder(private val binding: ItemJadwalSholatBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(sholat: JadwalSholat) {
+        fun bind(sholat: PrayerSchedule) {
             binding.apply {
                 tvJamShubuhSholat.text = sholat.subuh
                 tvJamSyuruqSholat.text = sholat.terbit
@@ -25,9 +25,9 @@ class SholatAdapter(var listJadwalSholat: ArrayList<JadwalSholat>) :
         }
     }
 
-    fun setOnJadwalSholat(sholat: List<JadwalSholat>) {
-        listJadwalSholat.clear()
-        listJadwalSholat.addAll(sholat)
+    fun setOnJadwalSholat(sholat: List<PrayerSchedule>) {
+        listPrayerSchedule.clear()
+        listPrayerSchedule.addAll(sholat)
         notifyDataSetChanged()
     }
 
@@ -38,8 +38,8 @@ class SholatAdapter(var listJadwalSholat: ArrayList<JadwalSholat>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(listJadwalSholat[position])
+        holder.bind(listPrayerSchedule[position])
     }
 
-    override fun getItemCount(): Int = listJadwalSholat.size
+    override fun getItemCount(): Int = listPrayerSchedule.size
 }

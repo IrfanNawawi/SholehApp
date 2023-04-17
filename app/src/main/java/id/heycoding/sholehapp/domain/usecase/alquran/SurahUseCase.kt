@@ -1,6 +1,5 @@
 package id.heycoding.sholehapp.domain.usecase.alquran
 
-import id.heycoding.sholehapp.data.mappingSurahToUseCaseEntity
 import id.heycoding.sholehapp.domain.model.alquran.Surah
 import id.heycoding.sholehapp.domain.repository.SholehRepository
 import id.heycoding.sholehapp.utils.ResultState
@@ -18,7 +17,7 @@ class SurahUseCase @Inject constructor(
     operator fun invoke(): Flow<ResultState<List<Surah>>> = flow {
         try {
             emit(ResultState.Loading())
-            val surah = repository.getAllSurah().mappingSurahToUseCaseEntity()
+            val surah = repository.getAllSurah()
             emit(ResultState.Success(surah))
         } catch (e: HttpException) {
             emit(

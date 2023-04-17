@@ -27,22 +27,20 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_bold_700"
                     android:text="Shubuh"
                     android:textColor="#313131"
-                    android:fontFamily="@font/montserrat_bold_700"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/tv_jam_shubuh_sholat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_medium_500"
                     android:gravity="center"
                     android:text="06:44"
-                    android:fontFamily="@font/montserrat_medium_500"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -65,22 +63,20 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_bold_700"
                     android:text="Dhuha"
                     android:textColor="#313131"
-                    android:fontFamily="@font/montserrat_bold_700"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/tv_jam_dhuha_sholat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_medium_500"
                     android:gravity="center"
                     android:text="06:44"
-                    android:fontFamily="@font/montserrat_medium_500"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -103,22 +99,20 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_bold_700"
                     android:text="Ashar"
                     android:textColor="#313131"
-                    android:fontFamily="@font/montserrat_bold_700"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/tv_jam_ashar_sholat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_medium_500"
                     android:gravity="center"
                     android:text="06:44"
-                    android:fontFamily="@font/montserrat_medium_500"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -141,22 +135,20 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Isya"
                     android:fontFamily="@font/montserrat_bold_700"
+                    android:text="Isya"
                     android:textColor="#313131"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/tv_jam_isya_sholat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_medium_500"
                     android:gravity="center"
                     android:text="06:44"
-                    android:fontFamily="@font/montserrat_medium_500"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -187,22 +179,20 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_bold_700"
                     android:text="Syuruq"
                     android:textColor="#313131"
-                    android:fontFamily="@font/montserrat_bold_700"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/tv_jam_syuruq_sholat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_medium_500"
                     android:gravity="center"
                     android:text="06:44"
-                    android:fontFamily="@font/montserrat_medium_500"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -225,22 +215,20 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_bold_700"
                     android:text="Dzuhur"
                     android:textColor="#313131"
-                    android:fontFamily="@font/montserrat_bold_700"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/tv_jam_zuhur_sholat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_medium_500"
                     android:gravity="center"
                     android:text="06:44"
-                    android:fontFamily="@font/montserrat_medium_500"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -263,22 +251,20 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_bold_700"
                     android:text="Magrib"
                     android:textColor="#313131"
-                    android:fontFamily="@font/montserrat_bold_700"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/tv_jam_magrib_sholat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_medium_500"
                     android:gravity="center"
                     android:text="06:44"
-                    android:fontFamily="@font/montserrat_medium_500"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -301,22 +287,20 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Imsyak"
                     android:fontFamily="@font/montserrat_bold_700"
+                    android:text="Imsyak"
                     android:textColor="#313131"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/tv_jam_imsyak_sholat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_medium_500"
                     android:gravity="center"
                     android:text="06:44"
-                    android:fontFamily="@font/montserrat_medium_500"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textSize="16sp" />
 
             </LinearLayout>
 

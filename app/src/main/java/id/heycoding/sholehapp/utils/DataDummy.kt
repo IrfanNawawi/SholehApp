@@ -1,8 +1,7 @@
 package id.heycoding.sholehapp.utils
 
 import id.heycoding.sholehapp.R
-import id.heycoding.sholehapp.data.source.entity.model.KajianNew
-import id.heycoding.sholehapp.data.source.entity.model.MainMenu
+import id.heycoding.sholehapp.domain.model.dummy.MainMenu
 
 object DataDummy {
 
@@ -13,95 +12,50 @@ object DataDummy {
             MainMenu(
                 idMenu = 1,
                 imageMenu = R.drawable.ic_quran,
-                titleMenu = "Al-Qur'an"
+                titleMenu = "Al-Qur'an",
+                titleMenuEng = "Al-Qur'an"
             )
         )
         mainMenu.add(
             MainMenu(
                 idMenu = 2,
                 imageMenu = R.drawable.ic_mosque,
-                titleMenu = "Jadwal Sholat"
+                titleMenu = "Jadwal Sholat",
+                titleMenuEng = "Pray Schedule"
             )
         )
         mainMenu.add(
             MainMenu(
                 idMenu = 3,
                 imageMenu = R.drawable.ic_pray,
-                titleMenu = "Arah Kiblat"
+                titleMenu = "Arah Kiblat",
+                titleMenuEng = "Qibla Route"
             )
         )
         mainMenu.add(
             MainMenu(
                 idMenu = 4,
                 imageMenu = R.drawable.ic_ramadan,
-                titleMenu = "Jadwal Puasa"
+                titleMenu = "Jadwal Puasa",
+                titleMenuEng = "Fasting Schedule"
             )
         )
         mainMenu.add(
             MainMenu(
                 idMenu = 5,
                 imageMenu = R.drawable.ic_zakat,
-                titleMenu = "Zakat"
+                titleMenu = "Zakat",
+                titleMenuEng = "Zakat"
             )
         )
         mainMenu.add(
             MainMenu(
                 idMenu = 6,
                 imageMenu = R.drawable.ic_qurban,
-                titleMenu = "Qurban"
+                titleMenu = "Qurban",
+                titleMenuEng = "Qurban"
             )
         )
         return mainMenu
-    }
-
-    fun generateDummyOnKajian(): ArrayList<KajianNew> {
-        val kajianNew = ArrayList<KajianNew>()
-
-        kajianNew.add(
-            KajianNew(
-                titleKajian = "One Minute Booster - Ge'er",
-                imageKajian = R.drawable.ic_launcher_background,
-                linkKajian = "https://www.youtube.com/watch?v=5uiuuOK3Crw&list=PLPVaZBOpYqfD5unBybO5A3zgk43H-Cr-t&index=6&ab_channel=HananAttaki",
-                timeKajian = "2 days ago",
-                sourceKajian = "Youtube"
-            )
-        )
-        kajianNew.add(
-            KajianNew(
-                titleKajian = "One Minute Booster - Ge'er",
-                imageKajian = R.drawable.ic_launcher_background,
-                linkKajian = "https://www.youtube.com/watch?v=5uiuuOK3Crw&list=PLPVaZBOpYqfD5unBybO5A3zgk43H-Cr-t&index=6&ab_channel=HananAttaki",
-                timeKajian = "2 days ago",
-                sourceKajian = "Youtube"
-            )
-        )
-        kajianNew.add(
-            KajianNew(
-                titleKajian = "One Minute Booster - Ge'er",
-                imageKajian = R.drawable.ic_launcher_background,
-                linkKajian = "https://www.youtube.com/watch?v=5uiuuOK3Crw&list=PLPVaZBOpYqfD5unBybO5A3zgk43H-Cr-t&index=6&ab_channel=HananAttaki",
-                timeKajian = "2 days ago",
-                sourceKajian = "Youtube"
-            )
-        )
-        kajianNew.add(
-            KajianNew(
-                titleKajian = "One Minute Booster - Ge'er",
-                imageKajian = R.drawable.ic_launcher_background,
-                linkKajian = "https://www.youtube.com/watch?v=5uiuuOK3Crw&list=PLPVaZBOpYqfD5unBybO5A3zgk43H-Cr-t&index=6&ab_channel=HananAttaki",
-                timeKajian = "2 days ago",
-                sourceKajian = "Youtube"
-            )
-        )
-        kajianNew.add(
-            KajianNew(
-                titleKajian = "One Minute Booster - Ge'er",
-                imageKajian = R.drawable.ic_launcher_background,
-                linkKajian = "https://www.youtube.com/watch?v=5uiuuOK3Crw&list=PLPVaZBOpYqfD5unBybO5A3zgk43H-Cr-t&index=6&ab_channel=HananAttaki",
-                timeKajian = "2 days ago",
-                sourceKajian = "Youtube"
-            )
-        )
-        return kajianNew
     }
 }

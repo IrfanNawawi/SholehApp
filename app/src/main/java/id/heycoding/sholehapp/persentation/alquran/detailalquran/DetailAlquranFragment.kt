@@ -1,14 +1,10 @@
 package id.heycoding.sholehapp.persentation.alquran.detailalquran
 
-import android.media.AudioManager
-import android.media.MediaPlayer
 import android.os.Bundle
-import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,12 +12,10 @@ import dagger.hilt.android.AndroidEntryPoint
 import id.heycoding.sholehapp.databinding.FragmentDetailAlquranBinding
 import id.heycoding.sholehapp.domain.model.alquran.Ayat
 import id.heycoding.sholehapp.domain.model.alquran.Surah
-import id.heycoding.sholehapp.persentation.MainActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import java.io.IOException
 
 @AndroidEntryPoint
 class DetailAlquranFragment : Fragment() {
@@ -30,24 +24,31 @@ class DetailAlquranFragment : Fragment() {
     private val fragmentDetailAlquranBinding get() = _fragmentDetailAlquranBinding
     private val detailAlquranViewModel by viewModels<DetailAlquranViewModel>()
     private lateinit var detailAlquranAdapter: DetailAlquranAdapter
-    private val listAyatAlquranData: MutableList<Ayat> = mutableListOf()
+
+    private var listAyatAlquranData: MutableList<Ayat> = mutableListOf()
+    private lateinit var numberSurah: String
     private var valueRepeat = 3
-    lateinit var numberSurah: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _fragmentDetailAlquranBinding = FragmentDetailAlquranBinding.inflate(layoutInflater, container, false)
+        _fragmentDetailAlquranBinding =
+            FragmentDetailAlquranBinding.inflate(layoutInflater, container, false)
 
-        setupUI()
-        setupObserve()
+        detailAlquranAdapter = DetailAlquranAdapter()
+
         return fragmentDetailAlquranBinding?.root
     }
 
-    private fun setupUI() {
-        detailAlquranAdapter = DetailAlquranAdapter(ArrayList())
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
+        setupUI()
+        setupObserve()
+    }
+
+    private fun setupUI() {
         val bundle = this.arguments
         if (bundle != null) {
             val dataAlquran = bundle.getParcelable<Surah>("data_alquran")
@@ -59,7 +60,8 @@ class DetailAlquranFragment : Fragment() {
                 tvInfoSurah.text = "${dataAlquran?.type} - ${dataAlquran?.ayat} Ayat"
 
                 rvAyatAlquran.apply {
-                    layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                    layoutManager =
+                        LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
                     setHasFixedSize(true)
                     adapter = detailAlquranAdapter
                     clipToPadding = false
@@ -70,33 +72,39 @@ class DetailAlquranFragment : Fragment() {
     }
 
     private fun setupObserve() {
-        detailAlquranViewModel.getAllAyat(numberSurah)
+        detailAlquranViewModel.apply {
+            getAllAyat(numberSurah)
 
-        CoroutineScope(Dispatchers.Main).launch {
-            repeat(valueRepeat) {
-                detailAlquranViewModel.listAyatData.collect { value ->
-                    when {
-                        value.isLoading -> {
-                            fragmentDetailAlquranBinding?.shimmerRvAyatAlquran?.startShimmer()
-                            fragmentDetailAlquranBinding?.shimmerRvAyatAlquran?.visibility = View.VISIBLE
-                        }
-                        value.error.isNotBlank() -> {
-                            fragmentDetailAlquranBinding?.shimmerRvAyatAlquran?.stopShimmer()
-                            fragmentDetailAlquranBinding?.shimmerRvAyatAlquran?.visibility = View.GONE
+            CoroutineScope(Dispatchers.Main).launch {
+                repeat(valueRepeat) {
+                    listAyatData.collect { value ->
+                        when {
+                            value.isLoading -> {
+                                fragmentDetailAlquranBinding?.shimmerRvAyatAlquran?.startShimmer()
+                                fragmentDetailAlquranBinding?.shimmerRvAyatAlquran?.visibility =
+                                    View.VISIBLE
+                            }
+                            value.error.isNotBlank() -> {
+                                fragmentDetailAlquranBinding?.shimmerRvAyatAlquran?.stopShimmer()
+                                fragmentDetailAlquranBinding?.shimmerRvAyatAlquran?.visibility =
+                                    View.GONE
 
-                            valueRepeat = 0
-                            Toast.makeText(requireContext(), value.error, Toast.LENGTH_LONG).show()
-                        }
-                        value.detailAlquranList.isNotEmpty() -> {
-                            fragmentDetailAlquranBinding?.shimmerRvAyatAlquran?.stopShimmer()
-                            fragmentDetailAlquranBinding?.shimmerRvAyatAlquran?.visibility = View.GONE
+                                valueRepeat = 0
+                                Toast.makeText(requireContext(), value.error, Toast.LENGTH_LONG)
+                                    .show()
+                            }
+                            value.detailAlquranList.isNotEmpty() -> {
+                                fragmentDetailAlquranBinding?.shimmerRvAyatAlquran?.stopShimmer()
+                                fragmentDetailAlquranBinding?.shimmerRvAyatAlquran?.visibility =
+                                    View.GONE
 
-                            valueRepeat = 0
-                            listAyatAlquranData.addAll(value.detailAlquranList)
-                            detailAlquranAdapter.setOnAyatAlquran(listAyatAlquranData)
+                                valueRepeat = 0
+                                listAyatAlquranData.addAll(value.detailAlquranList)
+                                detailAlquranAdapter.setOnAyatAlquran(listAyatAlquranData)
+                            }
                         }
+                        delay(1000)
                     }
-                    delay(1000)
                 }
             }
         }
